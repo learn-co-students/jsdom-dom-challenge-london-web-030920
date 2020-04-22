@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => { 
 
-setInterval(addUp, 1000)
+function increasingCounter() {
+    return setInterval(addUp, 1000)
+     }
+
+let increaseNew = increasingCounter()
 
 const counter = document.querySelector('#counter')
 
@@ -58,6 +62,29 @@ heart.addEventListener("click", function(e){
     list.appendChild(liElement)
     }
 
+})
+
+//find pause button 
+let pause = document.querySelector('#pause')
+console.log(pause)
+// click event stop timer
+pause.addEventListener('click', function(){
+   let array = document.querySelectorAll('button')
+   if (pause.innerText === "pause"){
+      clearInterval(increaseNew)
+      pause.innerText = "resume"
+      for (let i = 0; i < array.length; i ++){
+         array[i].disabled = true;
+      }
+      pause.disabled = false;
+   } else if (pause.innerText == "resume" ) { 
+      clearInterval(increaseNew)
+      increaseNew = increasingCounter()
+      pause.innerText = "pause"
+      for (let i = 0; i < array.length; i ++){
+         array[i].disabled = false;
+      }
+   }
 })
 
 
